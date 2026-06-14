@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario STS</title>
+    <style>
+	
+	body {
+    background-color: #f4f7f6; /* Un gris muy suave para que el blanco de la tarjeta resalte */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+#formularioSTS {
+    max-width: 600px; /* Esto evita que se estire demasiado en pantallas grandes */
+    margin: 0 auto;   /* Centra todo el formulario */
+    background: white;
+    padding: 30px;
+    border-radius: 15px; /* Bordes redondeados modernos */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Efecto de "elevación" */
+}
+
+/* Mejora para los títulos de sección (los botones azules) */
+.titulo {
+    background-color: #0056b3;
+    color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+	
+	/* Esto hace que el formulario no interfiera con tu diseño actual */
+#formularioSTS {
+    margin: 0;
+    padding: 0;
+    display: block; /* Mantiene la estructura original */
+}
+        :root { --azul-sts: #0056b3; --gris-fondo: #f2f2f2; }
+        body { font-family: sans-serif; background: var(--gris-fondo); margin: 0; padding: 0; }
+
+        /* Banner Azul Rey */
+        .banner { 
+            background-color: var(--azul-sts); 
+            padding: 25px; 
+            text-align: center; 
+            border-bottom: 3px solid #ffffff; 
+        }
+        
+        /* Contenedor y Acordeón */
+        .contenedor { padding: 20px; max-width: 600px; margin: auto; }
+        .seccion { background: white; margin-bottom: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .titulo { background: var(--azul-sts); color: white; padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
+        
+        /* La flechita */
+        .flecha { transition: transform 0.3s; font-size: 18px; }
+        .seccion.activa .flecha { transform: rotate(180deg); }
+        
+        .contenido { padding: 15px; display: none; background: #fff; }
+        .seccion.activa .contenido { display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        <img src="logoltsts.png" alt="Logo STS" style="max-width: 150px; height: auto; margin-bottom: 15px;">
+        <h1 style="color: white; font-size: 18px; margin: 0; letter-spacing: 1px; font-weight: 700;">
+            SOLUCIONES TÉCNICAS & SISTEMAS
+        </h1>
+        <p style="color: #ffffff; font-size: 14px; margin: 8px 0 0 0; font-weight: 400; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px;">
+            Formulario de Levantamiento Técnico STS
+        </p>
+    </div>
+
+    <div class="contenedor">
+	
+	<form id="formularioSTS">
+    
+        
+		<!-- Informacion Basica del Cliente/Empresa -->
+		
+        <div class="seccion">
+            <div class="titulo" onclick="this.parentElement.classList.toggle('activa')">
+                <span>Información Básica del Cliente</span>
+                <span class="flecha">▼</span>
+            </div>
+            <div class="contenido">
+                <label for="cliente">Nombre del Cliente / Proyecto:</label><br>
+                <input type="text" id="cliente" name="cliente" placeholder="Ej: Juan Pérez / Estación Boca de Uchire" required style="width: 100%; padding: 8px; margin-bottom: 15px; box-sizing: border-box;"><br>
+
+                <label for="fecha">Fecha de Inspección:</label><br>
+                <input type="date" id="fecha" name="fecha" required style="width: 100%; padding: 8px; margin-bottom: 15px; box-sizing: border-box;"><br>
+
+                <label for="ubicacion">Ubicación / Sitio:</label><br>
+                <input type="text" id="ubicacion" name="ubicacion" placeholder="Ej: Puerto Píritu, Sector Centro" required style="width: 100%; padding: 8px; box-sizing: border-box;">
+            </div>
+        </div>
+		
+				
+				<!-- Informacion Sobre La Red y  Cableado -->
+
+		
+		<div class="seccion">
+            <div class="titulo" onclick="this.parentElement.classList.toggle('activa')">
+                <span>Redes y Conectividad</span>
+                <span class="flecha">▼</span>
+            </div>
+            <div class="contenido">
+                
+                <p><strong>Tipo de Cableado:</strong></p>
+                <input type="checkbox" id="utp" name="cableado" value="utp"> <label for="utp">UTP</label><br>
+                <input type="checkbox" id="fibra" name="cableado" value="fibra"> <label for="fibra">Fibra Óptica</label><br>
+                <input type="checkbox" id="coaxial" name="cableado" value="coaxial"> <label for="coaxial">Coaxial</label><br><br>
+
+                <p><strong>Componentes de Red:</strong></p>
+                <input type="checkbox" id="rj45" name="componentes" value="rj45"> <label for="rj45">Conectores RJ45</label><br>
+                <input type="checkbox" id="switch" name="componentes" value="switch"> <label for="switch">Switch</label><br>
+                <input type="checkbox" id="router" name="componentes" value="router"> <label for="router">Router</label><br>
+                <input type="checkbox" id="ap" name="componentes" value="ap"> <label for="ap">Punto de acceso / Antena</label><br>
+                <input type="checkbox" id="patch" name="componentes" value="patch"> <label for="patch">Patch Panel</label><br><br>
+
+                <p><strong>Tipo de Conexión a Internet:</strong></p>
+                <input type="radio" id="con_fibra" name="conexion" value="fibra"> <label for="con_fibra">Fibra Óptica</label><br>
+                <input type="radio" id="con_cantv" name="conexion" value="cantv"> <label for="con_cantv">Cantv</label><br>
+                <input type="radio" id="con_sat" name="conexion" value="satelital"> <label for="con_sat">Satelital</label><br>
+                <input type="radio" id="con_ant" name="conexion" value="antena"> <label for="con_ant">Antena / Repetidor</label><br><br>
+
+                <label for="otros_redes"><strong>Otros detalles:</strong></label><br>
+                <textarea id="otros_redes" name="otros_redes" rows="2" style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;" placeholder="Escribe aquí cualquier otro componente o detalle..."></textarea>
+            </div>
+						
+        </div>
+        
+						<!-- Infraestructura, alimentación y protección eléctrica de los equipos.  -->
+
+		
+		<div class="seccion">
+    <div class="titulo" onclick="this.parentElement.classList.toggle('activa')">
+        <span>Electricidad y Protección</span>
+        <span class="flecha">▼</span>
+    </div>
+    <div class="contenido">
+        
+        <p><strong>Protección y Alimentación:</strong></p>
+        <input type="checkbox" id="regleta" name="proteccion" value="regleta"> <label for="regleta">Regleta / Multitoma</label><br>
+        <input type="checkbox" id="ups" name="proteccion" value="ups"> <label for="ups">UPS de protección</label><br>
+        <input type="checkbox" id="regulador" name="proteccion" value="regulador"> <label for="regulador">Regulador / Multitoma</label><br>
+        <input type="checkbox" id="planta" name="proteccion" value="planta"> <label for="planta">Planta eléctrica</label><br>
+        <input type="checkbox" id="paneles" name="proteccion" value="paneles"> <label for="paneles">Paneles solares</label><br><br>
+
+        <p><strong>Infraestructura Eléctrica:</strong></p>
+        <input type="checkbox" id="cableado_el" name="infraestructura" value="cableado"> <label for="cableado_el">Cableado eléctrico</label><br>
+        <input type="checkbox" id="cajetines" name="infraestructura" value="cajetines"> <label for="cajetines">Cajetines</label><br>
+        <input type="checkbox" id="tomacorrientes" name="infraestructura" value="tomacorrientes"> <label for="tomacorrientes">Tomacorrientes</label><br>
+        <input type="checkbox" id="breakers" name="infraestructura" value="breakers"> <label for="breakers">Breakers</label><br>
+        <input type="checkbox" id="tablero" name="infraestructura" value="tablero"> <label for="tablero">Tablero eléctrico</label><br><br>
+
+        <label for="otros_electrico"><strong>Otros detalles:</strong></label><br>
+        <textarea id="otros_electrico" name="otros_electrico" rows="2" style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;" placeholder="Observaciones eléctricas adicionales..."></textarea>
+
+    </div>
+</div>
+		
+		
+								<!--  Materiales de canalización y accesorios de fijación para el proyecto.   -->
+								
+								<div class="seccion">
+    <div class="titulo" onclick="this.parentElement.classList.toggle('activa')">
+        <span>Estética y Canalización</span>
+        <span class="flecha">▼</span>
+    </div>
+    <div class="contenido">
+        
+        <p><strong>Canalización Utilizada:</strong></p>
+        <input type="checkbox" id="conduit" name="canalizacion" value="conduit"> <label for="conduit">Tubería Conduit PVC</label><br>
+        <input type="checkbox" id="canaleta" name="canalizacion" value="canaleta"> <label for="canaleta">Canaletas plásticas</label><br>
+        <input type="checkbox" id="caja_paso" name="canalizacion" value="caja_paso"> <label for="caja_paso">Cajas de paso / Registro</label><br>
+        <input type="checkbox" id="cajetin_ext" name="canalizacion" value="cajetin_ext"> <label for="cajetin_ext">Cajetines externos</label><br><br>
+
+        <p><strong>Fijación y Accesorios:</strong></p>
+        <input type="checkbox" id="abrazadera" name="fijacion" value="abrazadera"> <label for="abrazadera">Abrazaderas Omega / U</label><br>
+        <input type="checkbox" id="conectores" name="fijacion" value="conectores"> <label for="conectores">Conectores para tubería</label><br>
+        <input type="checkbox" id="tornilleria" name="fijacion" value="tornilleria"> <label for="tornilleria">Tornillería y Ramplugs</label><br>
+        <input type="checkbox" id="tirraps" name="fijacion" value="tirraps"> <label for="tirraps">Tirraps</label><br><br>
+
+        <p><strong>¿Se requiere pintura o acabado final?</strong></p>
+        <input type="radio" id="pintura_si" name="pintura" value="si"> <label for="pintura_si">Sí</label>
+        <input type="radio" id="pintura_no" name="pintura" value="no"> <label for="pintura_no">No</label><br><br>
+
+        <label for="otros_estetica"><strong>Otros componentes u observaciones:</strong></label><br>
+        <textarea id="otros_estetica" name="otros_estetica" rows="2" style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;" placeholder="Observaciones sobre estética o acabados..."></textarea>
+
+    </div>
+</div>
+
+								<!--  Equipos, conectores, convertidores y elementos de distribución de señal.     -->
+
+<div class="seccion">
+    <div class="titulo" onclick="this.parentElement.classList.toggle('activa')">
+        <span>Conexionado y Montaje</span>
+        <span class="flecha">▼</span>
+    </div>
+    <div class="contenido">
+        
+        <p><strong>Conectores y Terminales:</strong></p>
+        <input type="checkbox" id="baluns" name="conectores" value="baluns"> <label for="baluns">Video Baluns</label><br>
+        <input type="checkbox" id="bnc" name="conectores" value="bnc"> <label for="bnc">Conectores BNC</label><br>
+        <input type="checkbox" id="dc" name="conectores" value="dc"> <label for="dc">Conectores DC (Macho/Hembra)</label><br>
+        <input type="checkbox" id="terminales" name="conectores" value="terminales"> <label for="terminales">Terminales y empalmes</label><br><br>
+
+        <p><strong>Distribución y Conversión de Señal:</strong></p>
+        <input type="checkbox" id="adaptador" name="distribucion" value="adaptador"> <label for="adaptador">Adaptadores BNC a RJ45 (Baluns)</label><br>
+        <input type="checkbox" id="fuentes" name="distribucion" value="fuentes"> <label for="fuentes">Transformadores de voltaje (Fuentes)</label><br>
+        <input type="checkbox" id="splitter" name="distribucion" value="splitter"> <label for="splitter">Splitters HDMI</label><br>
+        <input type="checkbox" id="extensor" name="distribucion" value="extensor"> <label for="extensor">Transmisores / Extensores HDMI</label><br><br>
+
+        <p><strong>Hardware de Montaje e Identificación:</strong></p>
+        <input type="checkbox" id="herrajes" name="hardware" value="herrajes"> <label for="herrajes">Herrajes / Soportes para cámaras</label><br>
+        <input type="checkbox" id="etiquetado" name="hardware" value="etiquetado"> <label for="etiquetado">Etiquetado / Rotulación de cables</label><br><br>
+
+        <p><strong>Cantidad de puntos de visualización:</strong></p>
+        <input type="checkbox" id="monitor_unico" name="visualizacion" value="monitor_unico"> <label for="monitor_unico">Monitor único (CCTV local)</label><br>
+        <input type="checkbox" id="multimonitor" name="visualizacion" value="multimonitor"> <label for="multimonitor">Multimonitor (2 o más)</label><br>
+        <input type="checkbox" id="remoto" name="visualizacion" value="remoto"> <label for="remoto">Acceso vía Smartphone/Tablet (Remoto)</label><br>
+        <input type="checkbox" id="pc" name="visualizacion" value="pc"> <label for="pc">Monitoreo en PC / Estaciones adicionales</label><br><br>
+
+        <label for="otros_conexionado"><strong>Otros detalles:</strong></label><br>
+        <textarea id="otros_conexionado" name="otros_conexionado" rows="2" style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;" placeholder="Observaciones adicionales de montaje..."></textarea>
+
+    </div>
+</div>
+
+								
+										<!--  Detalles adicionales, dimensiones, complicaciones del entorno o notas para la cotización final.      -->
+										
+									<div class="seccion">
+    <div class="titulo" onclick="this.parentElement.classList.toggle('activa')">
+        <span>Observaciones Generales y Cierre</span>
+        <span class="flecha">▼</span>
+    </div>
+    <div class="contenido">
+        
+        <label for="observaciones_finales"><strong>Detalles adicionales u observaciones del entorno:</strong></label><br>
+        <textarea id="observaciones_finales" name="observaciones_finales" rows="6" style="width: 100%; padding: 10px; margin-top: 10px; box-sizing: border-box;" placeholder="Ej: Techos a 5 metros de altura, requiere escalera de extensión. Entorno con alta humedad, requiere canalización estanca. Acceso difícil a cuarto de servidores..."></textarea>
+        
+        <br><br>
+        
+        <input type="checkbox" id="confirmacion" name="confirmacion" required> 
+        <label for="confirmacion"><strong>Inspección técnica completada y verificada.</strong></label>
+        
+    </div>
+</div>	
+						
+
+
+
+		
+		
+		
+		
+		
+        </div>
+		
+		<div style="text-align: center; margin-top: 30px; margin-bottom: 30px; padding: 20px; border-top: 1px solid #ccc;">
+    <button type="button" onclick="generarPDF()" style="background-color: #28a745; color: white; padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 5px;">
+        Generar PDF
+    </button>
+    <button type="button" onclick="resetFormulario()" style="background-color: #dc3545; color: white; padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 5px;">
+        Limpiar Formulario
+    </button>
+</div>
+		
+		
+</form>									
+
+
+	<!--  Generar PDF, Autoguardado, y limpiar Formulario     -->
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    const form = document.getElementById('formularioSTS');
+
+    // 1. AUTO-GUARDADO: Escucha cambios en cualquier campo y los guarda en memoria
+    form.addEventListener('input', () => {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        localStorage.setItem('datosFormulario', JSON.stringify(data));
+    });
+
+    // 2. RECUPERACIÓN: Al abrir la página, rellena los campos automáticamente
+    window.onload = () => {
+        const savedData = JSON.parse(localStorage.getItem('datosFormulario'));
+        if (savedData) {
+            Object.keys(savedData).forEach(key => {
+                const input = form.elements[key];
+                if (input) {
+                    if (input.type === 'checkbox' || input.type === 'radio') {
+                        input.checked = (savedData[key] === input.value);
+                    } else {
+                        input.value = savedData[key];
+                    }
+                }
+            });
+        }
+    };
+
+    // 3. LIMPIEZA: Botón de reset (borra memoria y refresca)
+	
+    function resetFormulario() {
+    if(confirm("¿Estás seguro de que deseas borrar toda la inspección?")) {
+        // Borramos del almacenamiento
+        localStorage.removeItem('datosFormulario');
+        
+        // Limpiamos visualmente el formulario
+        form.reset(); 
+        
+        // Recargamos para asegurar que todo esté en cero
+        location.reload(); 
+    }
+}
+
+    // 4. GENERAR PDF: Crea el reporte con los datos actuales
+	
+function generarPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    const margenIzq = 20;
+    const anchoMaximo = 170;
+    let y = 20;
+
+    // Función: Pie de Página
+    const addFooter = () => {
+        doc.setDrawColor(200);
+        doc.line(20, 280, 190, 280);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.text("Soluciones Técnicas y Sistemas - Soluciones reales y respaldo profesional", 105, 285, { align: "center" });
+        doc.text("WhatsApp: 0412 834 2334", 105, 290, { align: "center" });
+    };
+
+    // Función: Salto de página seguro
+    const checkSpace = (espacioNecesario) => {
+        if (y + espacioNecesario > 270) {
+            addFooter();
+            doc.addPage();
+            y = 20;
+        }
+    };
+
+    // --- ENCABEZADO ---
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.text("Soluciones Técnicas y Sistemas", 105, y, { align: "center" });
+    y += 8;
+    doc.setFontSize(14);
+    doc.text("Técnico: Luis Romero", 105, y, { align: "center" });
+    y += 8;
+    doc.setFontSize(16);
+    doc.text("Reporte de Inspección Técnica", 105, y, { align: "center" });
+    y += 15;
+    doc.line(20, y, 190, y);
+    y += 10;
+
+    // --- CONTENIDO ---
+    const secciones = document.querySelectorAll('.seccion');
+    secciones.forEach(sec => {
+        const tituloSeccion = sec.querySelector('.titulo span')?.innerText;
+        if (!tituloSeccion) return;
+
+        // Si el título no cabe, saltamos antes de dibujarlo
+        if (y > 240) { addFooter(); doc.addPage(); y = 20; }
+        
+        doc.setFillColor(230, 230, 230);
+        doc.rect(margenIzq, y, anchoMaximo, 10, 'F');
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(13);
+        doc.setTextColor(0, 0, 0);
+        doc.text(tituloSeccion, 105, y + 7, { align: "center" });
+        y += 18;
+
+        const inputs = sec.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            if ((input.type === 'checkbox' || input.type === 'radio') && input.checked) {
+                let label = document.querySelector(`label[for="${input.id}"]`);
+                let texto = "• " + (label ? label.innerText : input.value);
+                let lineas = doc.splitTextToSize(texto, anchoMaximo);
+                
+                checkSpace(lineas.length * 7);
+                doc.setFont("helvetica", "normal");
+                doc.text(lineas, margenIzq, y);
+                y += (lineas.length * 7);
+            }
+            else if ((input.type === 'text' || input.tagName === 'TEXTAREA') && input.value.trim() !== "") {
+                let label = document.querySelector(`label[for="${input.id}"]`);
+                let labelText = (label ? label.innerText : input.name) + ":";
+                let valor = doc.splitTextToSize(input.value, anchoMaximo);
+                
+                checkSpace((valor.length * 7) + 15);
+                doc.setFont("helvetica", "bold");
+                doc.text(labelText, margenIzq, y);
+                y += 7;
+                doc.setFont("helvetica", "normal");
+                doc.text(valor, margenIzq, y);
+                y += (valor.length * 7) + 8;
+            }
+        });
+        y += 5;
+    });
+
+    addFooter();
+    doc.save("Reporte_Inspeccion.pdf");
+}
+	
+	
+	
+</script>
+		
+
+</body>
+</html>
